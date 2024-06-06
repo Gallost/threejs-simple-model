@@ -1,3 +1,5 @@
 /node_modules
 /resources/glb
 /resources/gltf
+/public/glb
+/public/gltf
