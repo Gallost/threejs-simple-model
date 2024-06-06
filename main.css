@@ -1,0 +1,28 @@
+.controls {
+    background-color: rgba(133, 133, 133, 0.596);
+    border-radius: 10px;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    min-width: 300px;
+    min-height: 200px;
+    padding: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input {
+    -moz-appearance: textfield; /* Firefox */
+    border-radius: 10px;
+}
+.spotlight-control[type=number] {
+    width: 30px;
+}
+.control-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
