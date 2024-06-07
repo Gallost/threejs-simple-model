@@ -4,15 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>threeJS test</title>
+    <script src="js/initialize.js"></script>
     <script type="module" src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
 <body style="margin: 0; background-color: white;">
     <canvas class="webgl"></canvas>
     <div class="controls">
+        <div class="control-group-name">Ambient Lighting</div>
         <div class="control-group">
-            <input type="range" min="0" max="100" class="spotlight-control">
-            <input type="number" min="0" max="100" class="spotlight-control">
+            <div class="control-name">Brightness</div>
+            <input type="range" step="0.01" min="0" max="2" class="ambient-brightness">
+            <input type="number" min="0" max="2" class="ambient-brightness">
+
+            <div class="control-name">Colour</div>
+            <input type="color" class="ambient-colour">
+        </div>
+        &nbsp;
+        <div class="control-group-name">Spotlight</div>
+        <div class="control-group">
+            <div class="control-name">Brightness</div>
+            <input type="range" min="0" max="100" class="spotlight-brightness">
+            <input type="number" min="0" max="100" class="spotlight-brightness">
+
+            <div class="control-name">X</div>
+            <input type="range" step="0.01" min="-10" max="10" class="spotlight-coordinates x">
+            <input type="number" min="-10" max="10" class="spotlight-coordinates x">
+            
+            <div class="control-name">Y</div>
+            <input type="range" step="0.01" min="0" max="5" class="spotlight-coordinates y">
+            <input type="number" min="0" max="10" class="spotlight-coordinates y">
+
+            <div class="control-name">Z</div>
+            <input type="range" step="0.01" min="-10" max="10" class="spotlight-coordinates z">
+            <input type="number" min="-10" max="10" class="spotlight-coordinates z">
         </div>
     </div>
 </body>

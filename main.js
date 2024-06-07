@@ -2,12 +2,18 @@ import * as THREE from 'three';
 import { DRACOLoader, GLTFLoader, OrbitControls, RGBELoader } from 'three/examples/jsm/Addons.js';
 
 const canvas = document.querySelector(".webgl");
-const spotlightInputs = document.getElementsByClassName("spotlight-control");
+const spotlightBrightness = document.getElementsByClassName("spotlight-brightness");
+const spotlightCoordinates = document.getElementsByClassName("spotlight-coordinates");
+const ambientBrightness = document.getElementsByClassName("ambient-brightness");
+const ambientColour = document.getElementsByClassName("ambient-colour");
 
 // FLOOR TEXTURE, SKYBOX, MODEL PATHS
-const FLOOR_TEXTURE_PATH = "resources/textures/worn_planks_diff_1k.jpg";
-const SKYBOX_PATH = "resources/environment/abandoned_parking_1k.hdr";
-const MODEL_PATH = "resources/gltf/SAMPLE\ 1/RENDER\ 1.gltf";
+const FLOOR_TEXTURE_PATH = "textures/worn_planks_diff_1k.jpg";
+const SKYBOX_PATH = "environment/dikhololo_night_4k.hdr";
+// const MODEL_PATH = "gltf/SAMPLE\ 1/RENDER\ 1.gltf";
+// const MODEL_PATH = "glb/test.draco.glb";
+// const MODEL_PATH = "gltf/render_sample_1/Sample\ 1.gltf";
+const MODEL_PATH = "glb/clamshell_36.glb"
 
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -30,7 +36,7 @@ controls.enablePan = true;
 // controls.minDistance = 2;
 controls.maxPolarAngle = Math.PI / 2;
 controls.minPolarAngle = Math.PI / 3;
-controls.autoRotate = true;
+// controls.autoRotate = true;
 controls.autoRotateSpeed = 1;
 controls.update();
 
@@ -40,8 +46,8 @@ scene.background = new THREE.Color(0x202020);
 
 const floorTexture = new THREE.TextureLoader().load(FLOOR_TEXTURE_PATH);
 floorTexture.repeat = new THREE.Vector2(1, 1);
-floorTexture.wrapS = THREE.ReplaceWrapping;
-floorTexture.wrapT = THREE.ReplaceWrapping;
+// floorTexture.wrapS = THREE.ReplaceWrapping;
+// floorTexture.wrapT = THREE.ReplaceWrapping;
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(2, 2),
     new THREE.MeshStandardMaterial({
@@ -52,8 +58,9 @@ plane.position.set(0, -0.3, 0);
 plane.receiveShadow = true;
 scene.add(plane);
 
-// const ambient = new THREE.AmbientLight(0xffffff, 0.1);
-// scene.add(ambient);
+const ambient = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(ambient);
+initAmbientControls(ambient, ambientBrightness, ambientColour);
 
 // const light = new THREE.DirectionalLight(0xffffff, 1);
 // light.position.set(10, 20, -5).normalize();
@@ -62,26 +69,20 @@ scene.add(plane);
 // const dLightHelper = new THREE.DirectionalLightHelper(light);
 // scene.add(dLightHelper);
 
-const spotlight = new THREE.SpotLight(0xEFC070, 1);
-spotlight.position.set(0, 1, 0).normalize();
+// SPOTLIGHT
+const spotlight = new THREE.SpotLight(0xEFC070, 100);
+spotlight.position.set(2.44, 2.61, 1.44);
 spotlight.castShadow = true;
 const spotlightHelper = new THREE.SpotLightHelper(spotlight);
 scene.add(spotlight, spotlightHelper);
-console.log(spotlightInputs);
-for (var input of spotlightInputs) {
-    input.value = spotlight.intensity;
-    input.addEventListener("change", () => {
-        console.log(input.type + ": input.value = " + input.value);
-        spotlight.intensity = input.value;
-        for (var x of spotlightInputs) if (input != x) x.value = spotlight.intensity;
-    });
-}
-
+initSpotlightControls(spotlight, spotlightHelper, spotlightBrightness, spotlightCoordinates);
 
 const hdriLoader = new RGBELoader()
 hdriLoader.load(SKYBOX_PATH, function (texture) {
+  // texture.mapping = THREE.EquirectangularRefractionMapping;
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture;
+  scene.environmentIntensity = 1;
 });
 
 const gltfLoader = new GLTFLoader();
@@ -91,7 +92,6 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 gltfLoader.load(MODEL_PATH, (gltf) => {
     const mesh = gltf.scene;
-    console.log(mesh);
     mesh.position.z = 0.3;
     mesh.position.y = -0.3;
     mesh.castShadow = true;

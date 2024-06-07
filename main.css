@@ -1,10 +1,14 @@
+:root {
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
 .controls {
     background-color: rgba(133, 133, 133, 0.596);
     border-radius: 10px;
     position: absolute;
     top: 2%;
     right: 2%;
-    min-width: 300px;
+    max-width: 300px;
     min-height: 200px;
     padding: 10px;
 }
@@ -18,11 +22,29 @@ input {
     -moz-appearance: textfield; /* Firefox */
     border-radius: 10px;
 }
-.spotlight-control[type=number] {
-    width: 30px;
+[type=number] {
+    max-width: 30px;
+}
+.control-group-name {
+    margin-bottom: 2px;
+}
+.control-name {
+    margin-right: 5px;
+    font-size: 12px;
 }
 .control-group {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
+}
+.control-group > .control-name {
+    flex: 1 0 20%;
+    max-width: 80px;
+}
+.control-group > [type=range] {
+    flex: 1 0 30%;
+}
+.control-group > [type=number] {
+    flex: 1 0 20%;
 }
