@@ -13,7 +13,7 @@ const SKYBOX_PATH = "environment/dikhololo_night_4k.hdr";
 // const MODEL_PATH = "gltf/SAMPLE\ 1/RENDER\ 1.gltf";
 // const MODEL_PATH = "glb/test.draco.glb";
 // const MODEL_PATH = "gltf/render_sample_1/Sample\ 1.gltf";
-const MODEL_PATH = "glb/clamshell_36.glb"
+const MODEL_PATH = "prod_models/s_clamshell_36.glb"
 
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -104,6 +104,7 @@ gltfLoader.load(MODEL_PATH, (gltf) => {
         }
     });
     scene.add(mesh);
+    document.getElementsByClassName("loading-screen")[0].style.display = "none";
 });
 
 // RENDER LOOP
