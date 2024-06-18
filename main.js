@@ -10,14 +10,11 @@ const ambientColour = document.getElementsByClassName("ambient-colour");
 // FLOOR TEXTURE, SKYBOX, MODEL PATHS
 const FLOOR_TEXTURE_PATH = "textures/worn_planks_diff_1k.jpg";
 const SKYBOX_PATH = "environment/dikhololo_night_4k.hdr";
-// const MODEL_PATH = "gltf/SAMPLE\ 1/RENDER\ 1.gltf";
-// const MODEL_PATH = "glb/test.draco.glb";
-// const MODEL_PATH = "gltf/render_sample_1/Sample\ 1.gltf";
-const MODEL_PATH = "prod_models/s_clamshell_36.glb"
+const MODEL_PATH = "prod_models/xpe36.draco.glb";
 
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x505050);
+// renderer.setClearColor(0x505050);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.NeutralToneMapping;
@@ -73,16 +70,16 @@ initAmbientControls(ambient, ambientBrightness, ambientColour);
 const spotlight = new THREE.SpotLight(0xEFC070, 100);
 spotlight.position.set(2.44, 2.61, 1.44);
 spotlight.castShadow = true;
+spotlight.shadow.bias = -0.015;
 const spotlightHelper = new THREE.SpotLightHelper(spotlight);
-scene.add(spotlight, spotlightHelper);
+scene.add(spotlight);
 initSpotlightControls(spotlight, spotlightHelper, spotlightBrightness, spotlightCoordinates);
 
 const hdriLoader = new RGBELoader()
 hdriLoader.load(SKYBOX_PATH, function (texture) {
-  // texture.mapping = THREE.EquirectangularRefractionMapping;
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture;
-  scene.environmentIntensity = 1;
+  // scene.environmentIntensity = 1;
 });
 
 const gltfLoader = new GLTFLoader();

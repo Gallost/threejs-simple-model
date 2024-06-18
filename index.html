@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>threeJS test</title>
+    <title>XPE36 Model</title>
     <script src="js/initialize.js"></script>
     <script type="module" src="main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+
+    <!-- <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script> -->
 </head>
 <body>
+    <!-- <model-viewer style="width: 100vw; height: 100vh;" src="prod_models/s_clamshell_36.glb" ar environment-image="environment/blocky_photo_studio_1k.hdr" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer> -->
     <canvas class="webgl"></canvas>
-    <div class="controls">
+    <div class="controls" style="display: none;">
         <div class="control-group-name">Ambient Lighting</div>
         <div class="control-group">
             <div class="control-name">Brightness</div>
@@ -43,6 +47,11 @@
             <input type="number" min="-10" max="10" class="spotlight-coordinates z">
         </div>
     </div>
-    <div class="loading-screen"></div>
+    <!-- <div class="loading-screen" style="display: flex; justify-content: center; align-items: center;">
+        <svg width="97.919" height="97.502" viewBox="0 0 97.919 97.502" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#ffffff" stroke-width="13" fill="none" style="stroke:#ffffff;stroke-width:13;fill:none"><path d="M 29.949 93.699 A 47.908 47.908 0 0 0 48.959 97.501 A 54.46 54.46 0 0 0 49.636 97.497 A 47.626 47.626 0 0 0 68.022 93.699 Q 76.876 89.897 83.595 83.23 A 48.727 48.727 0 0 0 94.116 67.709 Q 97.918 58.855 97.918 48.751 Q 97.918 38.647 94.116 29.793 A 48.727 48.727 0 0 0 83.595 14.272 Q 76.876 7.605 68.022 3.803 A 45.923 45.923 0 0 0 65.646 2.86 A 48.291 48.291 0 0 0 48.959 0.001 A 47.908 47.908 0 0 0 29.949 3.803 Q 21.043 7.605 14.324 14.272 A 48.727 48.727 0 0 0 3.803 29.793 Q 0.001 38.647 0.001 48.751 Q 0.001 58.855 3.803 67.709 A 48.727 48.727 0 0 0 14.324 83.23 Q 21.043 89.897 29.949 93.699 Z M 48.959 86.251 Q 59.272 86.251 67.605 81.199 Q 75.939 76.147 80.782 67.605 A 37.555 37.555 0 0 0 85.626 48.751 A 38.611 38.611 0 0 0 83.231 35.055 A 36.197 36.197 0 0 0 80.782 29.845 A 37.055 37.055 0 0 0 67.605 16.303 A 35.126 35.126 0 0 0 49.602 11.256 A 41.728 41.728 0 0 0 48.959 11.251 A 36.1 36.1 0 0 0 35.74 13.639 A 34 34 0 0 0 30.366 16.303 Q 22.084 21.355 17.189 29.845 A 36.944 36.944 0 0 0 12.304 47.779 A 43.762 43.762 0 0 0 12.293 48.751 A 37.242 37.242 0 0 0 17.189 67.605 Q 22.084 76.147 30.366 81.199 A 34.783 34.783 0 0 0 47.997 86.24 A 41.529 41.529 0 0 0 48.959 86.251 Z" vector-effect="non-scaling-stroke"/></g></svg>    
+    </div> -->
+    <a class="enable-ar" href="prod_models/s_clamshell_36.usdz">
+        AR
+    </a>
 </body>
 </html>

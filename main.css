@@ -55,3 +55,15 @@ input {
     background-color: black;
     height: 100vh;
 }
+.enable-ar {
+    position: absolute;
+    bottom: 40%;
+    left: 10px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    color: black;
+    padding: 10px;
+    font-family: "Roboto Mono", monospace;
+    z-index: 9999;
+}
