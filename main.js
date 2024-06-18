@@ -84,7 +84,7 @@ hdriLoader.load(SKYBOX_PATH, function (texture) {
 
 const gltfLoader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("node_modules/three/examples/jsm/libs/draco/");
+dracoLoader.setDecoderPath("draco/");
 gltfLoader.setDRACOLoader(dracoLoader);
 
 gltfLoader.load(MODEL_PATH, (gltf) => {
